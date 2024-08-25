@@ -1,5 +1,6 @@
 import pyxel as px
-
+import constants
+import utils
 class Monster:
     i = 0
     def __init__(self, x, y, life, vel, color, raio):
@@ -11,6 +12,9 @@ class Monster:
         self.color = color
         self.raio = raio
 
+    def update_monster(self):
+        self.move_monster(constants.route)
+
     def draw_monster(self):
         px.circ(self.x, self.y, self.raio, self.color)
 
@@ -19,19 +23,7 @@ class Monster:
             return
 
         self.direcao = [route[self.pontoAtual][0]-self.x,route[self.pontoAtual][1]-self.y]
-        if self.direcao[0] == 0:
-             self.direcao[0] = 1
-        if self.direcao[1] == 0:
-             self.direcao[1] = 1
-
-        if self.direcao[0] > 0:
-             self.direcao[0] = 1
-        if self.direcao[0] < 0:
-             self.direcao[0] = -1
-        if self.direcao[1] > 0:
-             self.direcao[1] = 1
-        if self.direcao[1] < 0:
-             self.direcao[1] = -1
+        self.direcao = utils.verificar_direcao(self.direcao)
 
         if self.x != route[self.pontoAtual][0]:
             self.x += (self.vel * self.direcao[0]) 
