@@ -14,7 +14,8 @@ class Monster:
 
     def update_monster(self):
         self.move_monster(constants.route)
-
+        self.draw_monster()
+        
     def draw_monster(self):
         px.circ(self.x, self.y, self.raio, self.color)
 

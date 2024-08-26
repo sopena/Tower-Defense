@@ -7,7 +7,7 @@ from monster import Monster
 def detectar_colisao(obj1, obj2):
     distancia = math.sqrt((obj1.x - obj2.x)**2 + (obj1.y - obj2.y)**2)
     if distancia <= obj1.raio*8 + obj2.raio:
-        return True
+        return obj2
     else:
         return False
 

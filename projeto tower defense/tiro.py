@@ -1,4 +1,6 @@
 import pyxel as px
+import constants
+import utils
 from math import sqrt
 
 class Tiro:
@@ -13,13 +15,7 @@ class Tiro:
     def update_tiro(self):
         if self.acertou == False:
             pass
+                
 
     def draw_tiro(self):
         px.circ(self.x, self.y, self.raio, self.color)
-    
-    def detectar_colisao(self, inimigo):
-        distancia = sqrt((self.x - inimigo.x)**2 + (self.y - inimigo.y)**2)
-        if distancia <= self.raio*8 + inimigo.raio:
-            return True
-        else:
-            return False

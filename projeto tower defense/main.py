@@ -16,6 +16,7 @@ class App:
         px.run(self.update, self.draw)
 
     def update(self):
+        px.cls(0)
         px.mouse(visible=True)
 
         if px.btn(px.MOUSE_BUTTON_LEFT):
@@ -33,19 +34,12 @@ class App:
 
         for i in range(len(constants.lista_tiros)):
             constants.lista_tiros[i].update_tiro()
-
-    def draw(self):
-        px.cls(0)
-
+        
         # desenha o hud
         utils.desenha_hud()
 
-        # rodar o draw de cada classe
-        for i in range(len(constants.lista_torres)):
-            constants.lista_torres[i].draw_tower()
 
-        for i in range(len(constants.monsters)):
-            constants.monsters[i].draw_monster()
-
+    def draw(self):
+        pass
 
 App(constants.tempo, constants.tempo_spaw, constants.fps)
